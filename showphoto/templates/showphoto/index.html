@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -16,15 +15,15 @@
             $('.button').click(function(event){
 
                 if($(this).attr('name') == $('#answer').attr("name")){
-                    $('.button').not(this).fadeOut();
+                    $('.button').not(this).css("color","#DDD");
                     $(this).text($('#full_name').attr("name"));
-                    $(this).css("background","#1abc9c");
-                    $(this).css("border-bottom","0");
+                    $(this).css("color","#6DC53F");
+                    $('#yes').css("display","block");
                 } else {
-                    $(this).css("background","#f39c12");
-                    $(this).css("border-bottom","0");
-                    $('.button[name="'+$('#answer').attr("name")+'"]').css("background","#1abc9c").css("border-bottom","0").text($('#full_name').attr("name"));
-                    $('.button').not(this).not($('.button[name="'+$('#answer').attr("name")+'"]')).fadeOut();
+                    $(this).css("color","#F45701");
+                    $('.button[name="'+$('#answer').attr("name")+'"]').css("color","#6DC53F").text($('#full_name').attr("name"));
+                    $('.button').not(this).not($('.button[name="'+$('#answer').attr("name")+'"]')).css("color","#DDD");
+                    $('#no').css("display","block");
                 }
                 setTimeout(function(){
                          window.location.reload();
@@ -32,15 +31,7 @@
             });
 
         });
-
-
-
-
-
     </script>
-
-
-
 </head>
 
 
@@ -54,26 +45,26 @@
 
     <br/>
 
-    <img src="{{photo_url}}" width="250px" height="250px" style="margin:90px auto 0;display:block;box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.35)">
+    <img src="{{photo_url}}" width="311px" height="311px" style="margin:64px auto 0;display:block;position:relative;z-index: 1">
+    <div id="no" style="display: none;width: 311px; height: 310px; margin:-311px auto 0;position: relative; background:  url('/static/showphoto/no.png') 50% 50% no-repeat rgba(99,68,77,.7);z-index: 5"></div>
+    <div id="yes" style="display: none;width: 311px; height: 310px; margin:-311px auto 0;position: relative; background:  url('/static/showphoto/yes.png') 50% 50% no-repeat rgba(21,100,96,.7);z-index: 5"></div>
 
     <div id="answer" style="display: none" name="{{ first_name }}"></div>
     <div id="full_name" style="display: none" name="{{ full_name }}"></div>
 
     {% for name in names %}
         <div class="button" name="{{ name }}"
-                style=" height: 25px;
+                style=" height: 40px;
+                font-family: Arial, Helvetica, sans-serif;
                 position: relative;
                 vertical-align: middle;
-                padding: 15px 50px 0 50px;
+                padding:0;
                 margin: 20px auto;
-                font-size: 16px;
-                width:110px;
-                color: white;
+                font-size: 20px;
+                width:310px;
+                color: #bbb;
                 text-align: center;
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-                background: #f1c40f;
-                border: 0;
-                border-bottom: 3px solid #e2b607;
+                border-bottom: 1px solid #ddd;
                 cursor: pointer;
                 ">
 
